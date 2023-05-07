@@ -1,4 +1,4 @@
-# zadaca1-Automation
+# Homework1-Automation
 1.Create a maven tests project
 
 2.Add dependencies with the latest versions: TestNG, Selenium, 
@@ -20,3 +20,9 @@ supports)
 
 8. Upload your project to GitHub (Project name: placelab-qamp-ui-tests; 
 Note: Create a Pull Request ready for review)
+
+HOMEWORK 2 PlaceLab:
+
+1. Automate 3-5 tests for login functionality (make a good use of
+   testNG annotations)
+2. Open a PR ready for review (on the existing repository)
