@@ -41,8 +41,9 @@ public class LoginFunctionalityInvalidCredentials {
 
         // Verify that the error message is displayed
         Assert.assertTrue(driver.findElement(By.className("error-area")).isDisplayed(), "Validate Error message Invalid credentials appears.");
-}
-  @AfterTest
+    }
+
+    @AfterTest
     public void tearDown() {
         if (driver != null) {
             driver.close();

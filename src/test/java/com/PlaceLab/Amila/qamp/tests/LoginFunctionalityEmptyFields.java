@@ -38,7 +38,10 @@ public class LoginFunctionalityEmptyFields {
             throw new RuntimeException(e);
         }
         // Verify that the error message is displayed
-        Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"login\"]/div[1]/div/div")).isDisplayed(), "Validate Error message Invalid credentials appears.");
+        Assert.assertTrue(driver.findElement(By.xpath("//div[contains(text(), 'Invalid credentials!')]")).isDisplayed(), "Validate Error message Invalid credentials appears.");
+
+        //Verify user is still on login page
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"login-content\"]")).isDisplayed(), "Validate User is not transferred to homepage.");
     }
 
     @AfterTest

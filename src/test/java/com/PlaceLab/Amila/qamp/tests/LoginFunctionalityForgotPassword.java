@@ -32,7 +32,8 @@ public class LoginFunctionalityForgotPassword {
         driver.findElement(By.className("link-btn")).click();
 
         //Verify Forgot Password page is opened
-        Assert.assertTrue(driver.findElement(By.className("span12")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(), 'Change your password')]")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.xpath("//small[contains(text(), \"Let's find your account\")]")).isDisplayed());
 
         // Enter the registered email address
         driver.findElement(By.id("email")).sendKeys("amila.gicic@gmail.com");
@@ -48,6 +49,8 @@ public class LoginFunctionalityForgotPassword {
         //Verify page with message "We have sent you a link to change your password" is displayed
         Assert.assertTrue(driver.findElement(By.id("login")).isDisplayed());
 
+        //Verify text message is displayed
+        Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(), 'We have sent you a link to change your password')]")).isDisplayed());
     }
 
     @AfterTest

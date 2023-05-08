@@ -2,8 +2,6 @@
 
 <suite name="Smoke suite" verbose="1">
     <test name="PlaceLab Login test">
-
-
         <classes>
             <class name="com.PlaceLab.Amila.qamp.tests.SmokeTest"/>
             <class name="com.PlaceLab.Amila.qamp.tests.LoginFunctionalitySuccessfulLogin"/>

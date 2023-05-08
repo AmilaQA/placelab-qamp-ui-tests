@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -11,19 +12,20 @@ import org.testng.annotations.Test;
 public class LoginFunctionalityConcurrentLogin {
     private WebDriver chromeDriver;
     private WebDriver edgeDriver;
-    @Parameters("password")
+
+    @Parameters({"password", "email"})
     @Test
-    public void testSuccessfulConcurrentLogin(String password) {
+    public void testSuccessfulConcurrentLogin(String password, String email) {
         // Open two separate browsers or devices
         chromeDriver = new ChromeDriver();
         edgeDriver = new EdgeDriver();
 
         // Enter the same valid username and password in both instances
         chromeDriver.get("https://demo.placelab.com");
-        chromeDriver.findElement(By.id("email")).sendKeys("amila.gicic@gmail.com");
+        chromeDriver.findElement(By.id("email")).sendKeys(email);
         chromeDriver.findElement(By.id("password")).sendKeys(password);
         edgeDriver.get("https://demo.placelab.com");
-        edgeDriver.findElement(By.id("email")).sendKeys("amila.gicic@gmail.com");
+        edgeDriver.findElement(By.id("email")).sendKeys(email);
         edgeDriver.findElement(By.id("password")).sendKeys(password);
 
         // Click on the login button in both browser
@@ -46,17 +48,14 @@ public class LoginFunctionalityConcurrentLogin {
         String expectedUrl = "https://demo.placelab.com/dashboard/traffic";
         String actualUrl1 = chromeDriver.getCurrentUrl();
         String actualUrl2 = edgeDriver.getCurrentUrl();
-        if ((actualUrl1.equals(expectedUrl) && actualUrl2.equals(expectedUrl))
-                || (!actualUrl1.equals(expectedUrl) && !actualUrl2.equals(expectedUrl))) {
-            System.out.println("Test Passed!");
-        } else {
-            System.out.println("Test Failed!");
-        }
+        Assert.assertEquals(actualUrl1, expectedUrl, "URLs are not equal");
+        Assert.assertEquals(actualUrl2, expectedUrl, "URLs are not equal");
+
         // Close the browsers
         chromeDriver.quit();
         edgeDriver.quit();
     }
-        }
+}
 
 
 
