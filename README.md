@@ -1,6 +1,7 @@
 
-HOMEWORK 2 PlaceLab:
+HOMEWORK 3 PlaceLab:
 
-1. Automate 3-5 tests for login functionality (make a good use of
-   testNG annotations)
-2. Open a PR ready for review (on the existing repository)
+1.  Refactor the existing tests to use Page Object Model
+
+2. Automate PlaceLab Smoke Test (Create Single Place Search
+   Report)

@@ -9,6 +9,8 @@
             <class name="com.PlaceLab.Amila.qamp.tests.LoginFunctionalityEmptyFields"/>
             <class name="com.PlaceLab.Amila.qamp.tests.LoginFunctionalityConcurrentLogin"/>
             <class name="com.PlaceLab.Amila.qamp.tests.LoginFunctionalityForgotPassword"/>
+            <class name="com.PlaceLab.Amila.qamp.tests.SinglePlaceSearch_SuccessfulCreateReport"/>
+            <class name="com.PlaceLab.Amila.qamp.tests.LoginFunctionality"/>
         </classes>
     </test>
 </suite>
