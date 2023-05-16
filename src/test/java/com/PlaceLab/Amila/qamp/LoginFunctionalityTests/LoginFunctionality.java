@@ -1,5 +1,6 @@
-package com.PlaceLab.Amila.qamp.tests;
+package com.PlaceLab.Amila.qamp.LoginFunctionalityTests;
 
+import com.PlaceLab.Amila.qamp.pages.ForgotPWDPage;
 import com.PlaceLab.Amila.qamp.pages.HomePage;
 import com.PlaceLab.Amila.qamp.pages.LoginPage;
 import com.PlaceLab.Amila.qamp.utils.WebDriverSetup;
@@ -20,6 +21,7 @@ public class LoginFunctionality {
     private final SoftAssert softAssert = new SoftAssert();
     private LoginPage loginPage;
     private HomePage homePage;
+    private ForgotPWDPage forgotPWDPage;
 
     @Parameters("browser")
     @BeforeTest(alwaysRun = true, groups = {"Positive", "Negative"})
@@ -29,6 +31,7 @@ public class LoginFunctionality {
         System.out.println("Opened browser: " + browser);
         this.loginPage = new LoginPage(driver);
         this.homePage = new HomePage(driver);
+        this.forgotPWDPage = new ForgotPWDPage(driver);
     }
 
     @Test(priority = 1, description = "Validate user is able to successfully login with valid credentials.",
@@ -65,9 +68,9 @@ public class LoginFunctionality {
 
         loginPage.validateLoginPageContent();
         loginPage.clickForgotPasswordField();
-        loginPage.validateForgotPasswordPageOpened(email);
-        loginPage.enterEmailForgotPWDandClick(email);
-        loginPage.linkToChangePWD();
+        forgotPWDPage.validateForgotPasswordPageOpened(email);
+        forgotPWDPage.enterEmailForgotPWDandClick(email);
+        forgotPWDPage.linkToChangePWD();
     }
 
     @Test(priority = 3, description = "Validate user is not able to login with leaving the credentials fields empty.",

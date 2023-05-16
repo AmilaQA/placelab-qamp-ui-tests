@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class SinglePlaceSearchPage {
     private final static By SPS_NAV_BAR = By.xpath("/html/body/div[2]");
@@ -30,8 +31,8 @@ public class SinglePlaceSearchPage {
     private final static By LOCATION_NAME = By.cssSelector("#location_name");
     private final static By AUTOCOMPLETE_DROPDOWN = By.cssSelector(".typeahead.dropdown-menu");
     private final static By POP_UP = By.xpath("/html/body/div[10]/div[3]/div/button[1]");
+    private final static By REPORT_PAGE = By.cssSelector("#action-navbar > h2");
     private final WebDriver driver;
-    private LoginPage loginPage;
 
     public SinglePlaceSearchPage(final WebDriver webDriver) {
         this.driver = webDriver;
@@ -44,12 +45,7 @@ public class SinglePlaceSearchPage {
         Assert.assertTrue(driver.findElement(SPS_NAV_BAR).isDisplayed(), "Verify if Navigation bar is visible.");
 
         driver.findElement(SPS_DROPDOWN_MENI_CLICK).click();
-
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        driver.manage().timeouts().implicitlyWait(200, TimeUnit.MILLISECONDS);
 
         Assert.assertTrue(driver.findElement(SPS_DROPDOWN_MENI_OPEN).isDisplayed(), "Verify dropdown meni opens");
         Assert.assertTrue(driver.findElement(TITLE_PLACES).isDisplayed(), "Verify title PLACES is visible in dropdown meni");
@@ -87,7 +83,6 @@ public class SinglePlaceSearchPage {
 
         locationInput.sendKeys(Keys.ARROW_DOWN);
         locationInput.sendKeys(Keys.ENTER);
-
     }
 
     public void isThisYourLocationPopup() {
@@ -103,14 +98,9 @@ public class SinglePlaceSearchPage {
     }
 
     public void clickCreateReportBTN() {
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         driver.findElement(CREATE_SPS_REPORT_BTN).click();
-
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        wait.until(ExpectedConditions.visibilityOfElementLocated(REPORT_PAGE));
     }
 }
 

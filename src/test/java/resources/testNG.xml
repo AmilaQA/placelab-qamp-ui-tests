@@ -1,16 +1,21 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="Smoke suite" verbose="1">
+<suite name="PlaceLab suite" verbose="1">
     <test name="PlaceLab Login test">
         <classes>
-            <class name="com.PlaceLab.Amila.qamp.tests.SmokeTest"/>
-            <class name="com.PlaceLab.Amila.qamp.tests.LoginFunctionalitySuccessfulLogin"/>
-            <class name="com.PlaceLab.Amila.qamp.tests.LoginFunctionalityInvalidCredentials"/>
-            <class name="com.PlaceLab.Amila.qamp.tests.LoginFunctionalityEmptyFields"/>
-            <class name="com.PlaceLab.Amila.qamp.tests.LoginFunctionalityConcurrentLogin"/>
-            <class name="com.PlaceLab.Amila.qamp.tests.LoginFunctionalityForgotPassword"/>
-            <class name="com.PlaceLab.Amila.qamp.tests.SinglePlaceSearch_SuccessfulCreateReport"/>
-            <class name="com.PlaceLab.Amila.qamp.tests.LoginFunctionality"/>
+            <class name="com.PlaceLab.Amila.qamp.LoginFunctionalityTests.SmokeTest"/>
+            <class name="com.PlaceLab.Amila.qamp.LoginFunctionalityTests.LoginFunctionalitySuccessfulLogin"/>
+            <class name="com.PlaceLab.Amila.qamp.LoginFunctionalityTests.LoginFunctionalityInvalidCredentials"/>
+            <class name="com.PlaceLab.Amila.qamp.LoginFunctionalityTests.LoginFunctionalityEmptyFields"/>
+            <class name="com.PlaceLab.Amila.qamp.LoginFunctionalityTests.LoginFunctionalityConcurrentLogin"/>
+            <class name="com.PlaceLab.Amila.qamp.LoginFunctionalityTests.LoginFunctionalityForgotPassword"/>
+            <class name="com.PlaceLab.Amila.qamp.SPSReportFunctionalityTests.SinglePlaceSearch_SuccessfulCreateReport"/>
+            <class name="com.PlaceLab.Amila.qamp.LoginFunctionalityTests.LoginFunctionality"/>
+        </classes>
+    </test>
+    <test name="PlaceLab Single Place Search Smoke test">
+        <classes>
+            <class name="com.PlaceLab.Amila.qamp.SPSReportFunctionalityTests.SinglePlaceSearch_SuccessfulCreateReport"/>
         </classes>
     </test>
 </suite>

@@ -1,10 +1,19 @@
-package com.PlaceLab.Amila.qamp.tests;
+package com.PlaceLab.Amila.qamp.LoginFunctionalityTests;
 
 import com.PlaceLab.Amila.qamp.utils.WebDriverSetup;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
+import java.util.Random;
+
 public class SmokeTest {
+    public static void main(String[] args) {
+        Faker faker = new Faker ();
+        Random random = new Random();
+        System.out.println("faker: " + faker.funnyName().name());
+        System.out.println("faker: " + faker.address());
+    }
     private WebDriver driver;
 
     @BeforeTest

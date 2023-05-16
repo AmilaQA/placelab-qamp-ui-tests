@@ -14,11 +14,7 @@ public class LoginPage {
     private final static By LOGIN_SUBMIT_BTN = By.xpath("//input[@type='submit']");
     private final static By ACTUAL_ERROR_MESSAGE_INVALID_CRED = By.className("error-area");
     private final static By FORGOT_PASSWORD_FIELD = By.className("link-btn");
-    private final static By CHANGE_YOUR_PASSWORD = By.xpath("//p[contains(text(), 'Change your password')]");
-    private final static By LET_FIND_YOUR_ACCOUNT = By.xpath("//small[contains(text(), \"Let's find your account\")]");
-    private final static By FORGOT_PWD_CONTINUE_BUTTON = By.cssSelector("input[type=\"submit\"].btn");
-    private final static By FORGOT_PWD_NOTIFICATION_MESSAGE = By.xpath("//p[contains(text(), 'We have sent you a link to change your password')]");
-    private final static By NEW_PWD_NOTIFICATION_MESSAGE = By.id("login");
+
     private final static By INVALID_CREDENTIALS = By.xpath("//div[contains(text(), 'Invalid credentials!')]");
     private final static By LOGIN_PAGE_INV = By.xpath("//*[@id=\"login-content\"]");
     private final WebDriver driver;
@@ -65,27 +61,7 @@ public class LoginPage {
         driver.findElement(FORGOT_PASSWORD_FIELD).click();
     }
 
-    public void validateForgotPasswordPageOpened(final String email) {
 
-        Assert.assertTrue(driver.findElement(CHANGE_YOUR_PASSWORD).isDisplayed());
-        Assert.assertTrue(driver.findElement(LET_FIND_YOUR_ACCOUNT).isDisplayed());
-    }
-
-    public void enterEmailForgotPWDandClick(String email) {
-
-        driver.findElement(EMAIL_INPUT).sendKeys(email);
-
-        driver.findElement(FORGOT_PWD_CONTINUE_BUTTON).click();
-    }
-
-    public void linkToChangePWD() {
-
-        //Verify page with message "We have sent you a link to change your password" is opened
-        Assert.assertTrue(driver.findElement(NEW_PWD_NOTIFICATION_MESSAGE).isDisplayed());
-
-        //Verify text message is displayed
-        Assert.assertTrue(driver.findElement(FORGOT_PWD_NOTIFICATION_MESSAGE).isDisplayed());
-    }
 
     public void invalidCredentialsMessage() {
 

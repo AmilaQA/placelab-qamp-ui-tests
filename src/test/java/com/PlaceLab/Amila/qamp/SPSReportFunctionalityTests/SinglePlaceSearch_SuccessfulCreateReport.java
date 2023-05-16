@@ -1,4 +1,4 @@
-package com.PlaceLab.Amila.qamp.tests;
+package com.PlaceLab.Amila.qamp.SPSReportFunctionalityTests;
 
 import com.PlaceLab.Amila.qamp.pages.LoginPage;
 import com.PlaceLab.Amila.qamp.pages.ReportPage;
@@ -31,11 +31,11 @@ public class SinglePlaceSearch_SuccessfulCreateReport {
         this.reportPage = new ReportPage(driver);
     }
 
-    @Parameters({"location", "place"})
-    @Test(priority = 1, description = "Verify user can successfully create SPS report",
+    @Parameters({"location", "place", "expectedReportName"})
+    @Test(priority = 1, description = "Verify user can successfully create SPS report and delete the same",
             testName = "TC 01 Successful Create Single Place Search report")
 
-    public void testSuccessfulCreateReport(String location, String place) {
+    public void testSuccessfulCreateReport(String location, String place, String expectedReportName) {
 
         singlePlaceSearchPage.validateSinglePlacePageContent();
         singlePlaceSearchPage.clickSPSbuttonDropdownMeni();
@@ -45,6 +45,10 @@ public class SinglePlaceSearch_SuccessfulCreateReport {
         singlePlaceSearchPage.enterPlaceName(place);
         singlePlaceSearchPage.clickCreateReportBTN();
         reportPage.verifyReportPageContent();
+        reportPage.verifyReportName();
+        reportPage.openReport(expectedReportName);
+        reportPage.deleteReport(expectedReportName);
+        reportPage.verifyMessageReportSuccessfullyDeleted();
     }
 
     @AfterTest
