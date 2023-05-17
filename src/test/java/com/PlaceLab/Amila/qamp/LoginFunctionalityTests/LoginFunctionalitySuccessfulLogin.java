@@ -1,4 +1,4 @@
-package com.PlaceLab.Amila.qamp.tests;
+package com.PlaceLab.Amila.qamp.LoginFunctionalityTests;
 
 import com.PlaceLab.Amila.qamp.utils.WebDriverSetup;
 import org.openqa.selenium.By;
